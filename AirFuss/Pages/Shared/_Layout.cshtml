@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - My Razor App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <style>
+        /* Custom styling for the layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            background-color: var(--sidebar-bg, #a1bba5);
+            color: var(--sidebar-color, #ffffff);
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .theme-light {
+            --sidebar-bg: #f8f9fa;
+            --sidebar-color: #212529;
+        }
+
+        .theme-dark {
+            --sidebar-bg: #fff000;
+            --sidebar-color: #ffffff;
+        }
+
+        /* Bottom bar styling */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1030;
+        }
+
+        /* Image overlap styling */
+        .overlap-container {
+            position: relative;
+        }
+
+            .overlap-container img {
+                position: absolute;
+                bottom: 50%; /* Adjust the overlap percentage */
+                right: 20px; /* Adjust the horizontal positioning */
+                z-index: 1040; /* Ensure the image is above the bottom bar */
+                height: 100px; /* Set the image height */
+            }
+
+    </style>
+</head>
+<body class="theme-light" id="app-body">
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">AirFuss</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accounts</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="airSolutionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Air Solutions
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="airSolutionsDropdown">
+                            <img src="~/images/fuss.png" height="100" /> <ul>
+                            <li><a class="dropdown-item" href="#">Option 1</a></li>
+                            <li><a class="dropdown-item" href="#">Option 2</a></li>
+                            <li><a class="dropdown-item" href="#">Option 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="airSolutionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Financial</a>
+                        <div class="dropdown-menu" aria-labelledby="airSolutionsDropdown">
+                            <img src="~/images/fuss.png" height="100" /> <ul>
+                                <li><a class="dropdown-item" href="#">Option 1</a></li>
+                                <li><a class="dropdown-item" href="#">Option 2</a></li>
+                                <li><a class="dropdown-item" href="#">Option 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <select class="form-select form-select-sm" id="theme-switcher" style="width: auto;">
+                            <option value="light">Light Theme</option>
+                            <option value="dark">Dark Theme</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+
+            <partial name="_LoginPartial" />
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="d-flex" style="flex: 1;">
+        <!-- Sidebar -->
+        <div class="sidebar p-3 VM_RoundedCornersGrey">
+      @*       <h5 class="text-center">Sidebar</h5> *@
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-reset" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-reset" href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-reset" href="#">Know Your Customers (KYC)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-reset" href="#">Help</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            @RenderBody()
+        </div>
+    </div>
+     <!-- Fixed Bottom Bar -->
+    <div class="overlap-container">
+        <!-- Overlapping Image -->
+        <img src="/Images/fuss.png" alt="Overlapping Image" />
+
+        <!-- Bottom Bar -->
+        <div class="bottom-bar d-flex justify-content-between align-items-center">
+            <span>&copy; 2025 My Razor App</span>
+            <button class="btn btn-sm btn-primary" style="right: 100px;">Action Button</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme Switcher
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const appBody = document.getElementById('app-body');
+
+        themeSwitcher.addEventListener('change', function () {
+            if (this.value === 'dark') {
+                appBody.classList.remove('theme-light');
+                appBody.classList.add('theme-dark');
+            } else {
+                appBody.classList.remove('theme-dark');
+                appBody.classList.add('theme-light');
+            }
+        });
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

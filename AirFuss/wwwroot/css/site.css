@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.top-nav {
+    background-color: #0078d4;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .top-nav nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+    }
+
+.container {
+    display: flex;
+}
+
+.side-nav {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100vh;
+}
+
+    .side-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .side-nav a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+.VM_RoundedCornersGreen {
+    background-color: #f9f9f9; /* Light grey background */
+    border: 4px solid #d4d4d4; /* Light border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 8px;
+    margin: 20px 0;
+    border-color: green;
+}
+/* General styles for body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Fixed background image */
+.fixed-bg {
+    background-image: url('/Images/background.png'); /* Replace with your image URL */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Full screen height */
+}
+
+.fixed-bg2 {
+    background-image: url('/Images/thinking.png'); /* Replace with your image URL */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Full screen height */
+}
+
+.fixed-bg3 {
+    background-image: url('/Images/omnichannel.png'); /* Replace with your image URL */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Full screen height */
+}
+/* Scrollable content section */
+.content {
+    padding: 20px;
+    background-color: #fff; /* White background for contrast */
+    color: #333; /* Text color */
+}
+
+    /* Section headers */
+    .content h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Paragraph styles */
+    .content p {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: justify;
+        padding-bottom: 1rem;
+    }
+
+.VM_RoundedCornersBlue {
+    background-color: #f9f9f9; /* Light grey background */
+    border: 5px solid #d4d4d4; /* Light border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 8px;
+    margin: 20px 0;
+    border-color: steelblue;
+}
+
+.VM_RoundedCornersGrey {
+    background-color: lightslategrey; /* Light grey background */
+    border: 0px solid lightslategrey; /* Light border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 8px;
+    margin: 20px 0;
+    border-color: lightslategrey;
+}
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Adjust spacing if needed */
+}
+
+.dropdown-menu {
+    animation: fadeIn 0.3s ease-in-out; /* Optional: Add animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
